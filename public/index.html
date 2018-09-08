@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Flash Card</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/Users/gearyjohnson/Documents/code/Week-16/Day-1/flashCard_db/public/css/style.css">
+</head>
+<body>
+    <div class="container">
+
+      <h1>Flashcards</h1>
+      <p>Select a topic to study:</p>
+      
+      <form>
+            <select name="list" id="list" accesskey="target">
+                <option value='none' selected>Choose a theme</option>
+                
+                <option value="CSflashcard.html">Computer Science</option>
+                <option value="CSSflashcard.html">CSS</option>
+                <option value="SQLflashcard.html">SQL</option>
+            </select>
+
+            <input type=button value="Go" onclick="goToNewPage()" />
+            </form>
+
+      <script src="/Users/gearyjohnson/Documents/code/Week-16/Day-1/flashCard_db/public/javascript/script.js"></script>
+      <div class="footer">
+              <p>Flashcards for you</p>
+            </div></body>
+      </html>
