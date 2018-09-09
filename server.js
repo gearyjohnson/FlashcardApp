@@ -2,12 +2,12 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var mysql = require('mysql');
-var bodyparser = require('body-parser')
+// var bodyparser = require('body-parser');
 
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.urlencoded({ extended: true }));
 
-	// parse application/json
-	app.use(bodyParser.json());
+// 	// parse application/json
+// 	app.use(bodyParser.json());
 
 app.use(express.static("public"));
 
@@ -17,45 +17,51 @@ var connection = mysql.createConnection({
 	password: "Oakland2",
 	port: 3306,
 	database: 'flashcard_db'
-  });
+	});
+
+connection.connect(function(err) {
+		if (err) throw err;
+		console.log("Connected!");
+	});
    
 
-app.get('/', function(req, res){
-	res.sendFile(path.join(__dirname, "public/index.html"));
-});
+// app.get('/', function(req, res){
+// 	res.sendFile(path.join(__dirname, "public/index.html"));
+// });
 
-app.get('/CS', function(req, res){
-	res.sendFile(path.join(__dirname, "public/CSflashcard.html"));
-});
+// app.get('/CS', function(req, res){
+// 	res.sendFile(path.join(__dirname, "public/CSflashcard.html"));
+// });
 
-app.get('/CSS', function(req, res){
-	res.sendFile(path.join(__dirname, "public/CSSflashcard.html"));
-});
+// app.get('/CSS', function(req, res){
+// 	res.sendFile(path.join(__dirname, "public/CSSflashcard.html"));
+// });
 
-app.get('/SQL', function(req, res){
-	res.sendFile(path.join(__dirname, "public/SQLflashcard.html"));
-});
+// app.get('/SQL', function(req, res){
+// 	res.sendFile(path.join(__dirname, "public/SQLflashcard.html"));
+// });
 
 
 
-connection.query(
-	"INSERT INTO CS_flashcards (CS_questions, CS_answers) VALUES (?,?)",
-	[req.body.CS_questions, req.body.CS_answers],
-	function(err, response) {
-	  res.redirect('/CS');
-	}
-  );
+// connection.query(
+// 	"INSERT INTO CS_flashcards (CS_questions, CS_answers) VALUES (?,?)",
+// 	[req.body.CS_questions, req.body.CS_answers],
+// 	function(err, response) {
+// 		if(err) throw err;
+// 	  res.redirect('/CS');
+// 	}
+//   );
 
-app.get('/CS_flashcards', function(req, res){
-connection.query(
-	"SELECT * FROM CS_flashcards",
-	function(err, response) {
-		if(err) throw err;
+// // app.get('/CS_flashcards', function(req, res){
+// // connection.query(
+// // 	"SELECT * FROM CS_flashcards",
+// // 	function(err, response) {
+// // 		if(err) throw err;
 		
-	  res.json(response);
-	}
-  );
-});
+// // 	  res.json(response);
+// // 	}
+// //   );
+// // });
 
 app.listen(3000, function(){
 	console.log('listening on 3000');
